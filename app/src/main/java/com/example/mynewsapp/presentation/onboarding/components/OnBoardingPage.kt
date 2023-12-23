@@ -54,7 +54,7 @@ fun OnBoardingPage(
     }
 }
 
-@Preview(uiMode = UI_MODE_NIGHT_NO,showBackground = true)
+@Preview(showBackground = true)
 @Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun OnBoardingPagePreview() {
