@@ -1,4 +1,4 @@
-package com.example.mynewsapp.domain.usecases
+package com.example.mynewsapp.domain.usecases.app_entry
 
 import com.example.mynewsapp.domain.repository.LocalUserRepository
 

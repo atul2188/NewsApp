@@ -72,10 +72,24 @@ dependencies {
 
     //Splash Api
     implementation ("androidx.core:core-splashscreen:1.0.1")
+
     //Datastore
     implementation ("androidx.datastore:datastore-preferences:1.0.0")
+
     //Dagger Hilt
     implementation ("com.google.dagger:hilt-android:2.50")
     kapt ("com.google.dagger:hilt-compiler:2.50")
     implementation ("androidx.hilt:hilt-navigation-compose:1.1.0")
+
+    //Accompanist
+    implementation ("com.google.accompanist:accompanist-systemuicontroller:0.31.4-beta")
+
+    //Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    //Paging 3
+    val pagingVersion = "3.2.1"
+    implementation ("androidx.paging:paging-runtime-ktx:$pagingVersion")
+    implementation ("androidx.paging:paging-compose:3.2.1")
 }
