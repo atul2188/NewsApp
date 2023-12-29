@@ -26,7 +26,7 @@ class MainViewModel @Inject constructor(
     val startDestination: State<String> = _startDestination
 
     init {
-        appEntryUseCase.readAppEntryUseCase().onEach { shouldStartFromHomeScree ->
+        appEntryUseCase.readAppEntry().onEach { shouldStartFromHomeScree ->
             if(shouldStartFromHomeScree){
                 _startDestination.value = Route.NewsNavigation.route
             }else{
