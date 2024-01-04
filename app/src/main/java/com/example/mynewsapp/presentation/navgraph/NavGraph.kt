@@ -13,6 +13,7 @@ import com.example.mynewsapp.presentation.bookmark.BookmarkViewModel
 import com.example.mynewsapp.presentation.common.SearchBar
 import com.example.mynewsapp.presentation.home.HomeScreen
 import com.example.mynewsapp.presentation.home.HomeViewModel
+import com.example.mynewsapp.presentation.newsnavigator.NewsNavigator
 import com.example.mynewsapp.presentation.onboarding.OnBoardingScreen
 import com.example.mynewsapp.presentation.onboarding.OnBoardingViewModel
 import com.example.mynewsapp.presentation.search.SearchScreen
@@ -44,9 +45,7 @@ fun NavGraph(
             composable(
                 route = Route.NewsNavigatorScreen.route
             ){
-                val viewModel: BookmarkViewModel = hiltViewModel()
-                //SearchScreen(state = viewModel.state.value, event = viewModel::onEvent, navigate = {})
-                BookmarkScreen(state = viewModel.state.value, navigate = {})
+                NewsNavigator()
             }
         }
     }

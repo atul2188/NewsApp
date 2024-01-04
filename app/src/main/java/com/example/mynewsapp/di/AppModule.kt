@@ -2,7 +2,6 @@ package com.example.mynewsapp.di
 
 import android.app.Application
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.example.mynewsapp.data.remote.dto.NewsApi
 import com.example.mynewsapp.data.remote.local.NewsDao
 import com.example.mynewsapp.data.remote.local.NewsDatabase
@@ -19,6 +18,7 @@ import com.example.mynewsapp.domain.usecases.news.GetNews
 import com.example.mynewsapp.domain.usecases.news.NewsUseCase
 import com.example.mynewsapp.domain.usecases.news.SearchNews
 import com.example.mynewsapp.domain.usecases.news.SelectArticle
+import com.example.mynewsapp.domain.usecases.news.SelectArticles
 import com.example.mynewsapp.domain.usecases.news.UpsertArticle
 import com.example.mynewsapp.util.Constants.BASE_URL
 import com.example.mynewsapp.util.Constants.NEWS_DATABASE_NAME
@@ -62,20 +62,21 @@ object AppModule {
     @Provides
     @Singleton
     fun provideNewsRepository(
-        newsApi: NewsApi
-    ): NewsRepository = NewsRepositoryImpl(newsApi)
+        newsApi: NewsApi,
+        newsDao: NewsDao
+    ): NewsRepository = NewsRepositoryImpl(newsApi,newsDao)
 
     @Provides
     @Singleton
     fun provideNewsUseCase(
-        newsRepository: NewsRepository,
-        newsDao: NewsDao
+        newsRepository: NewsRepository
     ) = NewsUseCase(
         getNews = GetNews(newsRepository),
         searchNews = SearchNews(newsRepository),
-        upsertArticle = UpsertArticle(newsDao),
-        deleteArticle = DeleteArticle(newsDao),
-        selectArticle = SelectArticle(newsDao)
+        upsertArticle = UpsertArticle(newsRepository),
+        deleteArticle = DeleteArticle(newsRepository),
+        selectArticles = SelectArticles(newsRepository),
+        selectArticle = SelectArticle(newsRepository)
     )
 
     @Provides
